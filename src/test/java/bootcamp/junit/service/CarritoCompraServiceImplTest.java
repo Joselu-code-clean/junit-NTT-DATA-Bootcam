@@ -138,8 +138,10 @@ class CarritoCompraServiceImplTest {
 		System.out.println("TEST - testInsertarArticuloById");
 		Articulo articulo = new Articulo("Pijama", 9.9D);
 		int id = 0;
+		
 		when(bbddService.insertarArticuloById(any(Integer.class), any(Articulo.class))).thenReturn(8);
 		id = carritoService.insertarArticuloById(8, articulo);
+		
 		assertEquals(8, id);
 		assertTrue(carritoService.getArticulos().contains(articulo));
 		verify(bbddService, atLeast(1)).insertarArticuloById(any(Integer.class), any(Articulo.class));
